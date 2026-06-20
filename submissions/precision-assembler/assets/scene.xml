@@ -1,0 +1,129 @@
+<mujoco model="precision_assembler">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="RK4"/>
+  <size njmax="1000" nconmax="200"/>
+
+  <visual>
+    <global azimuth="135" elevation="-25" offwidth="960" offheight="540"/>
+    <headlight diffuse="0.55 0.55 0.55" ambient="0.25 0.25 0.25" specular="0.4 0.4 0.4"/>
+    <rgba haze="0.08 0.12 0.18 1"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.08 0.12 0.18" rgb2="0.01 0.015 0.025" width="512" height="3072"/>
+    <texture type="2d" name="floor_tex" builtin="checker" rgb1="0.12 0.14 0.16" rgb2="0.18 0.20 0.22" width="256" height="256"/>
+    <material name="floor_mat" texture="floor_tex" texrepeat="6 6" texuniform="true" reflectance="0.15"/>
+    <material name="table_mat" rgba="0.42 0.32 0.24 1"/>
+    <material name="metal" rgba="0.65 0.68 0.72 1" specular="0.5" shininess="0.35"/>
+    <material name="finger_mat" rgba="0.86 0.88 0.92 1"/>
+    <material name="pad_mat" rgba="0.08 0.08 0.09 1"/>
+    <material name="red" rgba="0.95 0.08 0.05 1"/>
+    <material name="green" rgba="0.08 0.85 0.18 1"/>
+    <material name="blue" rgba="0.08 0.22 0.95 1"/>
+    <material name="target" rgba="1 0.85 0.1 0.45"/>
+  </asset>
+
+  <default>
+    <default class="rail">
+      <joint damping="8" armature="0.02"/>
+      <position kp="650" kv="65" ctrlrange="-1 1"/>
+    </default>
+    <default class="finger">
+      <joint damping="0.12" armature="0.003" frictionloss="0.015"/>
+      <geom type="capsule" size="0.009 0.035" material="finger_mat" contype="1" conaffinity="1" condim="4" friction="1.3 0.01 0.002"/>
+      <position kp="25" kv="2.5" ctrlrange="-1.2 1.2"/>
+    </default>
+    <default class="block">
+      <geom type="box" size="0.035 0.035 0.035" mass="0.08" contype="1" conaffinity="1" condim="4" friction="1.6 0.02 0.004"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <camera name="demo" pos="1.15 -1.05 0.82" xyaxes="0.68 0.73 0 -0.38 0.35 0.86"/>
+    <light name="key" pos="0.2 -0.8 1.5" diffuse="0.8 0.8 0.78"/>
+    <geom name="floor" type="plane" size="1.5 1.5 0.05" material="floor_mat"/>
+    <geom name="table" type="box" pos="0.45 0 0.22" size="0.45 0.32 0.035" material="table_mat"/>
+    <geom name="target_pad" type="cylinder" pos="0.45 0 0.258" size="0.09 0.004" material="target"/>
+
+    <body name="block_red" pos="0.34 0.16 0.31">
+      <freejoint name="red_free"/>
+      <geom name="red_geom" class="block" material="red"/>
+    </body>
+    <body name="block_green" pos="0.52 -0.16 0.31">
+      <freejoint name="green_free"/>
+      <geom name="green_geom" class="block" material="green"/>
+    </body>
+    <body name="block_blue" pos="0.64 0.08 0.31">
+      <freejoint name="blue_free"/>
+      <geom name="blue_geom" class="block" material="blue"/>
+    </body>
+
+    <body name="gantry" pos="0 0 0.58">
+      <joint name="slide_x" type="slide" axis="1 0 0" range="0.12 0.75" class="rail"/>
+      <joint name="slide_y" type="slide" axis="0 1 0" range="-0.24 0.24" class="rail"/>
+      <joint name="slide_z" type="slide" axis="0 0 1" range="-0.24 0.16" class="rail"/>
+      <geom type="box" size="0.055 0.04 0.025" material="metal" contype="0" conaffinity="0"/>
+      <body name="wrist" pos="0 0 -0.045">
+        <joint name="wrist_yaw" type="hinge" axis="0 0 1" range="-1.57 1.57" damping="0.4"/>
+        <geom type="cylinder" size="0.035 0.018" material="metal"/>
+        <body name="palm" pos="0 0 -0.045">
+          <geom type="box" size="0.055 0.052 0.018" material="metal" condim="4" friction="1 0.01 0.002"/>
+          <site name="palm_center" pos="0 0 -0.025" size="0.008" rgba="1 1 0 1"/>
+
+          <body name="thumb_1" pos="0.034 0.042 -0.012" euler="0 0 -0.45">
+            <joint name="thumb_base" type="hinge" axis="0 1 0" range="-0.4 1.1" class="finger"/>
+            <geom class="finger" fromto="0 0 0 0 0 -0.055"/>
+            <body name="thumb_2" pos="0 0 -0.055">
+              <joint name="thumb_tip" type="hinge" axis="0 1 0" range="0 1.45" class="finger"/>
+              <geom class="finger" fromto="0 0 0 0 0 -0.048"/>
+              <site name="thumb_tip_site" pos="0 0 -0.052" size="0.007" rgba="1 0.4 0.4 1"/>
+            </body>
+          </body>
+
+          <body name="index_1" pos="0 0.032 -0.018">
+            <joint name="index_base" type="hinge" axis="1 0 0" range="-0.2 1.25" class="finger"/>
+            <geom class="finger" fromto="0 0 0 0 0 -0.065"/>
+            <body name="index_2" pos="0 0 -0.065">
+              <joint name="index_tip" type="hinge" axis="1 0 0" range="0 1.55" class="finger"/>
+              <geom class="finger" fromto="0 0 0 0 0 -0.052"/>
+              <site name="index_tip_site" pos="0 0 -0.055" size="0.007" rgba="1 0.4 0.4 1"/>
+            </body>
+          </body>
+
+          <body name="middle_1" pos="0 -0.032 -0.018">
+            <joint name="middle_base" type="hinge" axis="-1 0 0" range="-0.2 1.25" class="finger"/>
+            <geom class="finger" fromto="0 0 0 0 0 -0.065"/>
+            <body name="middle_2" pos="0 0 -0.065">
+              <joint name="middle_tip" type="hinge" axis="-1 0 0" range="0 1.55" class="finger"/>
+              <geom class="finger" fromto="0 0 0 0 0 -0.052"/>
+              <site name="middle_tip_site" pos="0 0 -0.055" size="0.007" rgba="1 0.4 0.4 1"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position name="x" joint="slide_x" class="rail" ctrlrange="0.12 0.75"/>
+    <position name="y" joint="slide_y" class="rail" ctrlrange="-0.24 0.24"/>
+    <position name="z" joint="slide_z" class="rail" ctrlrange="-0.24 0.16"/>
+    <position name="yaw" joint="wrist_yaw" kp="35" kv="4" ctrlrange="-1.57 1.57"/>
+    <position name="thumb_base" joint="thumb_base" class="finger"/>
+    <position name="thumb_tip" joint="thumb_tip" class="finger"/>
+    <position name="index_base" joint="index_base" class="finger"/>
+    <position name="index_tip" joint="index_tip" class="finger"/>
+    <position name="middle_base" joint="middle_base" class="finger"/>
+    <position name="middle_tip" joint="middle_tip" class="finger"/>
+  </actuator>
+
+  <sensor>
+    <jointpos name="x_pos" joint="slide_x"/>
+    <jointpos name="y_pos" joint="slide_y"/>
+    <jointpos name="z_pos" joint="slide_z"/>
+    <framepos name="palm_xyz" objtype="site" objname="palm_center"/>
+    <framepos name="thumb_xyz" objtype="site" objname="thumb_tip_site"/>
+    <framepos name="index_xyz" objtype="site" objname="index_tip_site"/>
+    <framepos name="middle_xyz" objtype="site" objname="middle_tip_site"/>
+  </sensor>
+</mujoco>

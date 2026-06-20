@@ -1,0 +1,368 @@
+{
+  "scene": "/home/workspace/Robothon-starter/submissions/precision-assembler/assets/scene.xml",
+  "video": "/home/workspace/Robothon-starter/submissions/precision-assembler/outputs/precision_assembler_demo.mp4",
+  "frames": 483,
+  "fps": 30,
+  "samples": [
+    {
+      "frame": 1,
+      "palm_target_xyz": [
+        0.28,
+        0.0,
+        0.56
+      ],
+      "carrying": null
+    },
+    {
+      "frame": 2,
+      "carrying": null
+    },
+    {
+      "frame": 3,
+      "carrying": null
+    },
+    {
+      "frame": 4,
+      "carrying": null
+    },
+    {
+      "frame": 5,
+      "carrying": null
+    },
+    {
+      "frame": 6,
+      "carrying": null
+    },
+    {
+      "frame": 7,
+      "carrying": null
+    },
+    {
+      "frame": 8,
+      "carrying": null
+    },
+    {
+      "frame": 9,
+      "carrying": null
+    },
+    {
+      "frame": 10,
+      "carrying": null
+    },
+    {
+      "frame": 11,
+      "palm_target_xyz": [
+        0.3042,
+        0.0644,
+        0.5399
+      ],
+      "carrying": null
+    },
+    {
+      "frame": 12,
+      "carrying": null
+    },
+    {
+      "frame": 13,
+      "carrying": null
+    },
+    {
+      "frame": 14,
+      "carrying": null
+    },
+    {
+      "frame": 15,
+      "carrying": null
+    },
+    {
+      "frame": 16,
+      "carrying": null
+    },
+    {
+      "frame": 17,
+      "carrying": null
+    },
+    {
+      "frame": 18,
+      "carrying": null
+    },
+    {
+      "frame": 19,
+      "carrying": null
+    },
+    {
+      "frame": 20,
+      "carrying": null
+    },
+    {
+      "frame": 21,
+      "palm_target_xyz": [
+        0.3372,
+        0.1525,
+        0.5123
+      ],
+      "carrying": null
+    },
+    {
+      "frame": 22,
+      "carrying": null
+    },
+    {
+      "frame": 23,
+      "carrying": null
+    },
+    {
+      "frame": 24,
+      "carrying": null
+    },
+    {
+      "frame": 25,
+      "carrying": null
+    },
+    {
+      "frame": 26,
+      "carrying": null
+    },
+    {
+      "frame": 27,
+      "carrying": null
+    },
+    {
+      "frame": 28,
+      "carrying": null
+    },
+    {
+      "frame": 29,
+      "carrying": null
+    },
+    {
+      "frame": 30,
+      "carrying": null
+    },
+    {
+      "frame": 31,
+      "palm_target_xyz": [
+        0.34,
+        0.16,
+        0.4854
+      ],
+      "carrying": null
+    },
+    {
+      "frame": 32,
+      "carrying": null
+    },
+    {
+      "frame": 33,
+      "carrying": null
+    },
+    {
+      "frame": 34,
+      "carrying": null
+    },
+    {
+      "frame": 35,
+      "carrying": null
+    },
+    {
+      "frame": 36,
+      "carrying": null
+    },
+    {
+      "frame": 37,
+      "carrying": null
+    },
+    {
+      "frame": 38,
+      "carrying": null
+    },
+    {
+      "frame": 39,
+      "carrying": null
+    },
+    {
+      "frame": 40,
+      "carrying": null
+    },
+    {
+      "frame": 41,
+      "palm_target_xyz": [
+        0.34,
+        0.16,
+        0.4183
+      ],
+      "carrying": null
+    },
+    {
+      "frame": 42,
+      "carrying": null
+    },
+    {
+      "frame": 43,
+      "carrying": null
+    },
+    {
+      "frame": 44,
+      "carrying": null
+    },
+    {
+      "frame": 45,
+      "carrying": null
+    },
+    {
+      "frame": 46,
+      "carrying": null
+    },
+    {
+      "frame": 47,
+      "carrying": null
+    },
+    {
+      "frame": 48,
+      "carrying": null
+    },
+    {
+      "frame": 49,
+      "carrying": null
+    },
+    {
+      "frame": 50,
+      "carrying": null
+    },
+    {
+      "frame": 51,
+      "palm_target_xyz": [
+        0.34,
+        0.16,
+        0.415
+      ],
+      "carrying": null
+    },
+    {
+      "frame": 52,
+      "carrying": null
+    },
+    {
+      "frame": 53,
+      "carrying": null
+    },
+    {
+      "frame": 54,
+      "carrying": null
+    },
+    {
+      "frame": 55,
+      "carrying": null
+    },
+    {
+      "frame": 56,
+      "carrying": null
+    },
+    {
+      "frame": 57,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 58,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 59,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 60,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 61,
+      "palm_target_xyz": [
+        0.34,
+        0.16,
+        0.427
+      ],
+      "carrying": "red_free"
+    },
+    {
+      "frame": 62,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 63,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 64,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 65,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 66,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 67,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 68,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 69,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 70,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 71,
+      "palm_target_xyz": [
+        0.34,
+        0.16,
+        0.498
+      ],
+      "carrying": "red_free"
+    },
+    {
+      "frame": 72,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 73,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 74,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 75,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 76,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 77,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 78,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 79,
+      "carrying": "red_free"
+    },
+    {
+      "frame": 80,
+      "carrying": "red_free"
+    }
+  ]
+}
